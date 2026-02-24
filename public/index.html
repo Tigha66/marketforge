@@ -6,12 +6,20 @@
   <title>MarketForge - Marketing Campaign Orchestrator</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>.glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1)}.gradient-text{background:linear-gradient(135deg,#ec4899,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent}</style>
+  <style>
+    .glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1)}
+    .gradient-text{background:linear-gradient(135deg,#ec4899,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  </style>
 </head>
 <body class="bg-[#0a0a0f] min-h-screen text-white">
   <header class="glass sticky top-0">
     <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center shadow-lg"><i class="fas fa-bullhorn text-2xl"></i></div><div><h1 class="text-2xl font-bold gradient-text">MarketForge</h1><p class="text-xs text-slate-400">Campaign Orchestrator</p></div></div>
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center shadow-lg">
+          <i class="fas fa-bullhorn text-2xl"></i>
+        </div>
+        <div><h1 class="text-2xl font-bold gradient-text">MarketForge</h1><p class="text-xs text-slate-400">Campaign Orchestrator</p></div>
+      </div>
     </div>
   </header>
   <main class="max-w-7xl mx-auto px-8 py-10">
@@ -22,14 +30,40 @@
       <div class="glass rounded-2xl p-6"><p class="text-slate-400 text-sm mb-2">Conversions</p><p class="text-4xl font-bold text-green-400">234</p></div>
     </div>
     <div class="grid lg:grid-cols-3 gap-8">
-      <div class="glass rounded-2xl p-8"><h2 class="text-xl font-bold mb-6"><i class="fas fa-magic text-pink-400 mr-3"></i>Create Campaign</h2>
-        <div class="space-y-4"><input placeholder="Campaign name..." class="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500"><select class="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white"><option>Email</option><option>Social Media</option><option>Multi-channel</option></select><button class="w-full py-4 bg-gradient-to-r from-pink-500 to-orange-500 rounded-xl font-semibold"><i class="fas fa-wand-magic-sparkles mr-2"></i>Generate Content</button></div>
+      <div class="glass rounded-2xl p-8">
+        <h2 class="text-xl font-bold mb-6"><i class="fas fa-magic text-pink-400 mr-3"></i>Create Campaign</h2>
+        <div class="space-y-4">
+          <input placeholder="Campaign name..." class="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500">
+          <select class="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white">
+            <option>Email</option><option>Social Media</option><option>Multi-channel</option>
+          </select>
+          <button class="w-full py-4 bg-gradient-to-r from-pink-500 to-orange-500 rounded-xl font-semibold"><i class="fas fa-wand-magic-sparkles mr-2"></i>Generate Content</button>
+        </div>
       </div>
-      <div class="col-span-2 glass rounded-2xl p-8"><h2 class="text-xl font-bold mb-6"><i class="fas fa-calendar text-orange-400 mr-3"></i>Scheduled Posts</h2>
+      <div class="col-span-2 glass rounded-2xl p-8">
+        <h2 class="text-xl font-bold mb-6"><i class="fas fa-calendar text-orange-400 mr-3"></i>Scheduled Posts</h2>
         <div class="space-y-3">
-          {[{platform:'Email',subject:'Summer Sale Launch',sched:'Tomorrow 9AM',status:'Ready'},{platform:'Instagram',content:'Product teaser',sched:'Today 6PM',status:'Scheduled'},{platform:'Twitter',content:'Announcement',sched:'Fri 12PM',status:'Draft'}].map(p=>`
-          <div class="bg-white/5 rounded-xl p-4 flex items-center justify-between"><div class="flex items-center gap-4"><div class="w-10 h-10 rounded-xl ${p.platform==='Email'?'bg-pink-500/20':p.platform==='Instagram'?'bg-purple-500/20':'bg-blue-500/20'} flex items-center justify-center"><i class="fas ${p.platform==='Email'?'fa-envelope':p.platform==='Instagram'?'fa-instagram':'fa-twitter'}"></i></div><div><p class="font-semibold">${p.subject||p.content}</p><p class="text-slate-400 text-sm">${p.sched}</p></div></div><span class="px-3 py-1 rounded-lg text-xs ${p.status==='Ready'?'bg-green-500/20 text-green-400':p.status==='Scheduled'?'bg-blue-500/20 text-blue-400':'bg-yellow-500/20 text-yellow-400'}">${p.status}</span></div>
-          `).join('')}
+          <div class="bg-white/5 rounded-xl p-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center"><i class="fas fa-envelope text-pink-400"></i></div>
+              <div><p class="font-semibold">Summer Sale Launch</p><p class="text-slate-400 text-sm">Tomorrow 9AM</p></div>
+            </div>
+            <span class="px-3 py-1 rounded-lg text-xs bg-green-500/20 text-green-400">Ready</span>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center"><i class="fab fa-instagram text-purple-400"></i></div>
+              <div><p class="font-semibold">Product teaser</p><p class="text-slate-400 text-sm">Today 6PM</p></div>
+            </div>
+            <span class="px-3 py-1 rounded-lg text-xs bg-blue-500/20 text-blue-400">Scheduled</span>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center"><i class="fab fa-twitter text-blue-400"></i></div>
+              <div><p class="font-semibold">Announcement</p><p class="text-slate-400 text-sm">Fri 12PM</p></div>
+            </div>
+            <span class="px-3 py-1 rounded-lg text-xs bg-yellow-500/20 text-yellow-400">Draft</span>
+          </div>
         </div>
       </div>
     </div>
